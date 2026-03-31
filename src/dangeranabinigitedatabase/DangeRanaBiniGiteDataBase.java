@@ -4,6 +4,7 @@
  */
 package dangeranabinigitedatabase;
 
+import java.sql.*;
 /**
  *
  * @author ranasgalla.niccolo
