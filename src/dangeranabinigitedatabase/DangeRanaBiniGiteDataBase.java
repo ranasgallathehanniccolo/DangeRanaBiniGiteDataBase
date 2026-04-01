@@ -5,6 +5,7 @@
 package dangeranabinigitedatabase;
 
 import java.sql.*;
+
 /**
  *
  * @author ranasgalla.niccolo
@@ -15,7 +16,53 @@ public class DangeRanaBiniGiteDataBase {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DriverManager.getConnection("jdbc:sqlite:gite.db");
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM Gite;");
+
+            String sqlCreaClassi = "CREATE TABLE IF NOT EXISTS Classi ("
+                    + "  CLA_ID        integer primary key autoincrement, "
+                    + "  CLA_Anno      integer, "
+                    + "  CLA_Sezione   varchar(10), "
+                    + "  CLA_Indirizzo varchar(50)"
+                    + ");";
+
+            stmt.execute(sqlCreaClassi);
+
+            String sqlCreaGite = "CREATE TABLE IF NOT EXISTS Gite ("
+                    + "  GIT_ID           integer primary key autoincrement, "
+                    + "  GIT_Destinazione varchar(50), "
+                    + "  GIT_Durata       integer, "
+                    + "  GIT_Prezzo       double"
+                    + ");";
+
+            stmt.execute(sqlCreaGite);
+
+            String sqlCreaAlunni = "CREATE TABLE IF NOT EXISTS Alunni ("
+                    + "  ALU_Matricola integer primary key autoincrement, "
+                    + "  ALU_Nome      varchar(50), "
+                    + "  ALU_Cognome   varchar(50), "
+                    + "  ALU_CLA_ID    integer references CLA_ID(Classi)"
+                    + ");";
+
+            stmt.execute(sqlCreaAlunni);
+
+            String sqlCreaPartecipazione = "CREATE TABLE IF NOT EXISTS Partecipazione ("
+                    + "  PAR_ID     integer primary key autoincrement, "
+                    + "  PAR_ALU_ID integer references ALU_Matricola(Alunni), "
+                    + "  PAR_GIT_ID integer references GIT_ID(Gite)"
+                    + ");";
+
+            stmt.execute(sqlCreaPartecipazione);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
-    
 }
