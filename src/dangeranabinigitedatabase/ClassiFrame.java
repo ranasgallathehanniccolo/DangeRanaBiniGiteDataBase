@@ -4,18 +4,24 @@
  */
 package dangeranabinigitedatabase;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ranasgalla.niccolo
  */
 public class ClassiFrame extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClassiFrame.class.getName());
 
     /**
      * Creates new form ClassiFrame
      */
-    public ClassiFrame() {
+    private Connection conn;
+
+    public ClassiFrame(Connection conn) {
+        this.conn = conn;
         initComponents();
     }
 
@@ -45,6 +51,11 @@ public class ClassiFrame extends javax.swing.JFrame {
         });
 
         btnCarica.setText("Carica");
+        btnCarica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaricaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Anno");
 
@@ -67,15 +78,15 @@ public class ClassiFrame extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(txtAnno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAnno)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCarica)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtSezione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSezione)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtIndirizzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(95, Short.MAX_VALUE))
+                                .addComponent(txtIndirizzo)))))
+                .addGap(95, 95, 95))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,30 +113,32 @@ public class ClassiFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnnoActionPerformed
 
+    private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed
+        try {
+            int anno = Integer.parseInt(txtAnno.getText());
+            String sezione = txtSezione.getText();
+            String indirizzo = txtIndirizzo.getText();
+
+            PreparedStatement pstmt = conn.prepareStatement(
+                    "INSERT INTO Classi (CLA_Anno, CLA_Sezione, CLA_Indirizzo) VALUES (?, ?, ?)"
+            );
+
+            pstmt.setInt(1, anno);
+            pstmt.setString(2, sezione);
+            pstmt.setString(3, indirizzo);
+            pstmt.execute();
+            pstmt.close();
+
+            JOptionPane.showMessageDialog(null, "Classe inserita con successo!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnCaricaActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ClassiFrame().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarica;

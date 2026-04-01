@@ -23,7 +23,7 @@ public class DangeRanaBiniGiteDataBase {
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:gite.db");
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("SELECT * FROM Gite;");
+            
 
             String sqlCreaClassi = "CREATE TABLE IF NOT EXISTS Classi ("
                     + "  CLA_ID        integer primary key autoincrement, "
@@ -59,7 +59,22 @@ public class DangeRanaBiniGiteDataBase {
                     + ");";
 
             stmt.execute(sqlCreaPartecipazione);
+
+            rs = stmt.executeQuery("SELECT * FROM Classi;");
+            while (rs.next()) {
+                System.out.println(
+                        rs.getInt("CLA_ID") + " | "
+                        + rs.getInt("CLA_Anno") + " | "
+                        + rs.getString("CLA_Sezione") + " | "
+                        + rs.getString("CLA_Indirizzo")
+                );
+            }
             
+            final Connection connection = conn;
+            java.awt.EventQueue.invokeLater(() -> new ClassiFrame(connection).setVisible(true));
+            
+            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
