@@ -41,6 +41,7 @@ public class ClassiFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btnSuccessivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +64,13 @@ public class ClassiFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Indirizzo");
 
+        btnSuccessivo.setText("Prossimo");
+        btnSuccessivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuccessivoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,17 +83,22 @@ public class ClassiFrame extends javax.swing.JFrame {
                         .addGap(52, 52, 52)
                         .addComponent(jLabel2)
                         .addGap(38, 38, 38)
-                        .addComponent(jLabel3))
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addComponent(txtAnno)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCarica)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtSezione)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtIndirizzo)))))
+                                .addComponent(txtIndirizzo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSuccessivo)
+                                    .addComponent(btnCarica))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(95, 95, 95))
         );
         layout.setVerticalGroup(
@@ -103,7 +116,9 @@ public class ClassiFrame extends javax.swing.JFrame {
                     .addComponent(txtIndirizzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(btnCarica)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnSuccessivo)
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,12 +151,20 @@ public class ClassiFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCaricaActionPerformed
 
+    private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
+        // TODO add your handling code here:
+        GiteFrame g = new GiteFrame();
+        g.setVisible(true);
+         
+    }//GEN-LAST:event_btnSuccessivoActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarica;
+    private javax.swing.JButton btnSuccessivo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
