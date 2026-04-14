@@ -19,6 +19,7 @@ public class DangeRanaBiniGiteDataBase {
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
+        ResultSet rg = null;
 
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:gite.db");
@@ -67,6 +68,16 @@ public class DangeRanaBiniGiteDataBase {
                         + rs.getInt("CLA_Anno") + " | "
                         + rs.getString("CLA_Sezione") + " | "
                         + rs.getString("CLA_Indirizzo")
+                );
+            }
+            
+            rg = stmt.executeQuery("SELECT * FROM Gite;");
+            while (rg.next()) {
+                System.out.println(
+                        rg.getInt("GIT_ID") + " | "
+                        + rg.getString("GIT_Destinazione") + " | "
+                        + rg.getInt("GIT_Durata") + " | "
+                        + rg.getInt("GIT_Prezzo")
                 );
             }
             

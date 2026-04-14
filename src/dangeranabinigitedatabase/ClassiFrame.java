@@ -153,7 +153,7 @@ public class ClassiFrame extends javax.swing.JFrame {
 
     private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
         // TODO add your handling code here:
-        GiteFrame g = new GiteFrame();
+        GiteFrame g = new GiteFrame(conn);
         g.setVisible(true);
          
     }//GEN-LAST:event_btnSuccessivoActionPerformed
