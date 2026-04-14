@@ -4,22 +4,21 @@
  */
 package dangeranabinigitedatabase;
 
-import java.sql.*;
-import javax.swing.JOptionPane;
+import java.sql.Connection;
 
 /**
  *
  * @author ranasgalla.niccolo
  */
-public class GiteFrame extends javax.swing.JFrame {
+public class AlunniFrame extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GiteFrame.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AlunniFrame.class.getName());
 
-     private Connection conn;
+    private Connection conn;
     /**
-     * Creates new form GiteFrame
+     * Creates new form StudentiFrame
      */
-    public GiteFrame(Connection conn) {
+    public AlunniFrame(Connection conn) {
         this.conn = conn;
         initComponents();
     }
@@ -33,30 +32,36 @@ public class GiteFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtDestinazione = new javax.swing.JTextField();
-        txtDurata = new javax.swing.JTextField();
-        txtPrezzo = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtCognome = new javax.swing.JTextField();
         btnCarica = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnSuccessivo = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtDestinazione.addActionListener(this::txtDestinazioneActionPerformed);
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
 
         btnCarica.setText("Carica");
-        btnCarica.addActionListener(this::btnCaricaActionPerformed);
+        btnCarica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaricaActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Destinazione");
+        jLabel1.setText("Nome");
 
-        jLabel2.setText("Durata");
+        jLabel2.setText("Cognome");
 
-        jLabel3.setText("Prezzo");
+        jLabel3.setText("Classe");
 
-        btnSuccessivo.setText("Prossimo");
-        btnSuccessivo.addActionListener(this::btnSuccessivoActionPerformed);
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,26 +71,22 @@ public class GiteFrame extends javax.swing.JFrame {
                 .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel2)
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtDestinazione)
+                        .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCarica)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDurata)
+                                .addComponent(txtCognome, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtPrezzo)))))
-                .addGap(95, 95, 95))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(166, 166, 166)
-                    .addComponent(btnSuccessivo)
-                    .addContainerGap(166, Short.MAX_VALUE)))
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(90, 90, 90))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel2)
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel3)
+                        .addGap(95, 95, 95))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,34 +98,30 @@ public class GiteFrame extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDestinazione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDurata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPrezzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCognome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addComponent(btnCarica)
                 .addContainerGap(174, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(138, 138, 138)
-                    .addComponent(btnSuccessivo)
-                    .addContainerGap(139, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDestinazioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDestinazioneActionPerformed
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDestinazioneActionPerformed
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed
         try {
-            String destinazione = txtDestinazione.getText();
-            int durata = Integer.parseInt(txtDurata.getText());
+            String nome = txtNome.getText();
+            String cognome = txtCognome.getText();
             int prezzo = Integer.parseInt(txtPrezzo.getText());
 
             PreparedStatement pstmt = conn.prepareStatement(
-                "INSERT INTO Gite (GIT_Destinazione, GIT_Durata, GIT_Prezzo) VALUES (?, ?, ?)"
+                "INSERT INTO Alunni (GIT_Destinazione, GIT_Durata, GIT_Prezzo) VALUES (?, ?, ?)"
             );
 
             pstmt.setString(1, destinazione);
@@ -140,22 +137,13 @@ public class GiteFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCaricaActionPerformed
 
-    private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
-        // TODO add your handling code here:
-        AlunniFrame g = new AlunniFrame(conn);
-        g.setVisible(true);
-
-    }//GEN-LAST:event_btnSuccessivoActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarica;
-    private javax.swing.JButton btnSuccessivo;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtDestinazione;
-    private javax.swing.JTextField txtDurata;
-    private javax.swing.JTextField txtPrezzo;
+    private javax.swing.JTextField txtCognome;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
