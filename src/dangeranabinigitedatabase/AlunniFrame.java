@@ -4,7 +4,8 @@
  */
 package dangeranabinigitedatabase;
 
-import java.sql.Connection;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,8 +22,26 @@ public class AlunniFrame extends javax.swing.JFrame {
     public AlunniFrame(Connection conn) {
         this.conn = conn;
         initComponents();
+        caricaClassi();
     }
 
+    private void caricaClassi() {
+        try {
+            cmbClasse.removeAllItems();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT CLA_ID, CLA_Anno, CLA_Sezione FROM Classi");
+            while (rs.next()) {
+                int id = rs.getInt("CLA_ID");
+                String voce = id + " - " + rs.getInt("CLA_Anno") + " " + rs.getString("CLA_Sezione");
+                cmbClasse.addItem(voce);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,7 +57,7 @@ public class AlunniFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbClasse = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,7 +80,7 @@ public class AlunniFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Classe");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbClasse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,7 +97,7 @@ public class AlunniFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtCognome, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(90, 90, 90))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -101,7 +120,7 @@ public class AlunniFrame extends javax.swing.JFrame {
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtCognome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addComponent(btnCarica)
                 .addContainerGap(174, Short.MAX_VALUE))
@@ -118,19 +137,22 @@ public class AlunniFrame extends javax.swing.JFrame {
         try {
             String nome = txtNome.getText();
             String cognome = txtCognome.getText();
-            int prezzo = Integer.parseInt(txtPrezzo.getText());
+
+            // Prende l'ID dalla voce selezionata nella ComboBox (es. "2 - 4 A")
+            String voceSelezionata = (String) cmbClasse.getSelectedItem();
+            int claId = Integer.parseInt(voceSelezionata.split(" - ")[0]);
 
             PreparedStatement pstmt = conn.prepareStatement(
-                "INSERT INTO Alunni (GIT_Destinazione, GIT_Durata, GIT_Prezzo) VALUES (?, ?, ?)"
+                    "INSERT INTO Alunni (ALU_Nome, ALU_Cognome, ALU_CLA_ID) VALUES (?, ?, ?)"
             );
 
-            pstmt.setString(1, destinazione);
-            pstmt.setInt(2, durata);
-            pstmt.setInt(3, prezzo);
+            pstmt.setString(1, nome);
+            pstmt.setString(2, cognome);
+            pstmt.setInt(3, claId);
             pstmt.execute();
             pstmt.close();
 
-            JOptionPane.showMessageDialog(null, "Destinazione inserita con successo!");
+            JOptionPane.showMessageDialog(null, "Alunno inserito con successo!");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -139,7 +161,7 @@ public class AlunniFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarica;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> cmbClasse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
