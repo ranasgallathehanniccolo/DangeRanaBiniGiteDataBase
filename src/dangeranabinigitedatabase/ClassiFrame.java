@@ -87,13 +87,13 @@ public class ClassiFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(txtAnno)
+                        .addComponent(txtAnno, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtSezione)
+                                .addComponent(txtSezione, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtIndirizzo))
+                                .addComponent(txtIndirizzo, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnSuccessivo)
@@ -118,7 +118,7 @@ public class ClassiFrame extends javax.swing.JFrame {
                 .addComponent(btnCarica)
                 .addGap(18, 18, 18)
                 .addComponent(btnSuccessivo)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
         pack();

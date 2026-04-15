@@ -85,7 +85,7 @@ public class GiteFrame extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(166, 166, 166)
                     .addComponent(btnSuccessivo)
-                    .addContainerGap(166, Short.MAX_VALUE)))
+                    .addContainerGap(405, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,12 +102,12 @@ public class GiteFrame extends javax.swing.JFrame {
                     .addComponent(txtPrezzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(btnCarica)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(138, 138, 138)
                     .addComponent(btnSuccessivo)
-                    .addContainerGap(139, Short.MAX_VALUE)))
+                    .addContainerGap(239, Short.MAX_VALUE)))
         );
 
         pack();
@@ -141,7 +141,7 @@ public class GiteFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCaricaActionPerformed
 
     private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
-        // TODO add your handling code here:
+      
         AlunniFrame g = new AlunniFrame(conn);
         g.setVisible(true);
 

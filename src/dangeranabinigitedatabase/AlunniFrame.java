@@ -58,6 +58,7 @@ public class AlunniFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cmbClasse = new javax.swing.JComboBox<>();
+        btnSuccessivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +83,13 @@ public class AlunniFrame extends javax.swing.JFrame {
 
         cmbClasse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnSuccessivo.setText("Prossimo");
+        btnSuccessivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuccessivoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,12 +98,12 @@ public class AlunniFrame extends javax.swing.JFrame {
                 .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                        .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCarica)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCognome, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                                .addComponent(txtCognome, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(90, 90, 90))))
@@ -106,6 +114,11 @@ public class AlunniFrame extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(jLabel3)
                         .addGap(95, 95, 95))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(166, 166, 166)
+                    .addComponent(btnSuccessivo)
+                    .addContainerGap(405, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +136,12 @@ public class AlunniFrame extends javax.swing.JFrame {
                         .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addComponent(btnCarica)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(138, 138, 138)
+                    .addComponent(btnSuccessivo)
+                    .addContainerGap(239, Short.MAX_VALUE)))
         );
 
         pack();
@@ -159,8 +177,15 @@ public class AlunniFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCaricaActionPerformed
 
+    private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
+
+        PartecipazioniFrame g = new PartecipazioniFrame (conn);
+        g.setVisible(true);
+    }//GEN-LAST:event_btnSuccessivoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarica;
+    private javax.swing.JButton btnSuccessivo;
     private javax.swing.JComboBox<String> cmbClasse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

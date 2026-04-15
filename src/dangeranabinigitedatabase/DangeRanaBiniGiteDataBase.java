@@ -21,6 +21,7 @@ public class DangeRanaBiniGiteDataBase {
         ResultSet rs = null;
         ResultSet rg = null;
         ResultSet ra = null;
+        ResultSet rp = null;
 
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:gite.db");
@@ -89,6 +90,15 @@ public class DangeRanaBiniGiteDataBase {
                         + ra.getString("ALU_Nome") + " | "
                         + ra.getString("ALU_Cognome") + " | "
                         + ra.getString("ALU_CLA_ID")
+                );
+            }
+            
+            rp = stmt.executeQuery("SELECT * FROM Partecipazione;");
+            while (rs.next()) {
+                System.out.println(
+                        rp.getInt("PAR_ID") + " | "
+                        + rp.getInt("PAR_ALU_ID") + " | "
+                        + rp.getInt("PAR_GIT_ID")
                 );
             }
             

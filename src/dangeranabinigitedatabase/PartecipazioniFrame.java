@@ -5,6 +5,7 @@
 package dangeranabinigitedatabase;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,17 +22,19 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
     public PartecipazioniFrame(Connection conn) {
         initComponents();
         this.conn = conn;
+        caricaAlunni();
+        caricaGite();
     }
 
-    private void caricaStudnti() {
+     private void caricaAlunni() {
         try {
-            cmbStudente.removeAllItems();
+            cmbAlunni.removeAllItems();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT CLA_ID, CLA_Anno, CLA_Sezione FROM Classi");
+            ResultSet rs = stmt.executeQuery("SELECT ALU_Matricola, ALU_Nome, ALU_Cognome FROM Alunni");
             while (rs.next()) {
-                int id = rs.getInt("CLA_ID");
-                String voce = id + " - " + rs.getInt("CLA_Anno") + " " + rs.getString("CLA_Sezione");
-                cmbClasse.addItem(voce);
+                // es. "1 - Mario Rossi"
+                String voce = rs.getInt("ALU_Matricola") + " - " + rs.getString("ALU_Nome") + " " + rs.getString("ALU_Cognome");
+                cmbAlunni.addItem(voce);
             }
             rs.close();
             stmt.close();
@@ -39,6 +42,25 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+     
+     private void caricaGite() {
+        try {
+            cmbGite.removeAllItems();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT GIT_ID, GIT_Destinazione FROM Gite");
+            while (rs.next()) {
+                // es. "1 - Roma"
+                String voce = rs.getInt("GIT_ID") + " - " + rs.getString("GIT_Destinazione");
+                cmbGite.addItem(voce);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+     
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,7 +72,7 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cmbStudente = new javax.swing.JComboBox<>();
+        cmbAlunni = new javax.swing.JComboBox<>();
         cmbGite = new javax.swing.JComboBox<>();
         btnCarica = new javax.swing.JButton();
 
@@ -60,11 +82,16 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Gite");
 
-        cmbStudente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbAlunni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cmbGite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnCarica.setText("Carica");
+        btnCarica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaricaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,7 +105,7 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
                 .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addComponent(cmbStudente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbAlunni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(btnCarica)
                 .addGap(18, 18, 18)
@@ -94,7 +121,7 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbStudente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbAlunni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbGite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCarica))
                 .addContainerGap(218, Short.MAX_VALUE))
@@ -103,10 +130,37 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed
+        try {
+            // "1 - Mario Rossi" prende "1"
+            String voceAlunno = (String) cmbAlunni.getSelectedItem();
+            int aluId = Integer.parseInt(voceAlunno.split(" - ")[0]);
+
+            // "1 - Roma" prende "1"
+            String voceGita = (String) cmbGite.getSelectedItem();
+            int gitId = Integer.parseInt(voceGita.split(" - ")[0]);
+
+            PreparedStatement pstmt = conn.prepareStatement(
+                "INSERT INTO Partecipazione (PAR_ALU_ID, PAR_GIT_ID) VALUES (?, ?)"
+            );
+
+            pstmt.setInt(1, aluId);
+            pstmt.setInt(2, gitId);
+            pstmt.execute();
+            pstmt.close();
+
+            JOptionPane.showMessageDialog(null, "Partecipazione inserita con successo!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
+    }//GEN-LAST:event_btnCaricaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarica;
+    private javax.swing.JComboBox<String> cmbAlunni;
     private javax.swing.JComboBox<String> cmbGite;
-    private javax.swing.JComboBox<String> cmbStudente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
