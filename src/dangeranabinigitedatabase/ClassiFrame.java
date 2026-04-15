@@ -34,99 +34,102 @@ public class ClassiFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         txtAnno = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         txtSezione = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         txtIndirizzo = new javax.swing.JTextField();
         btnCarica = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         btnSuccessivo = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Anno");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+
+        txtAnno.setBackground(new java.awt.Color(102, 0, 0));
+        txtAnno.setForeground(new java.awt.Color(255, 255, 255));
+        txtAnno.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAnno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAnnoActionPerformed(evt);
             }
         });
+        jPanel1.add(txtAnno, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 90, -1));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Sezione");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
+
+        txtSezione.setBackground(new java.awt.Color(102, 0, 0));
+        txtSezione.setForeground(new java.awt.Color(255, 255, 255));
+        txtSezione.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(txtSezione, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 90, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Indirizzo");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
+
+        txtIndirizzo.setBackground(new java.awt.Color(102, 0, 0));
+        txtIndirizzo.setForeground(new java.awt.Color(255, 255, 255));
+        txtIndirizzo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(txtIndirizzo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 90, -1));
+
+        btnCarica.setBackground(new java.awt.Color(102, 0, 0));
+        btnCarica.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnCarica.setForeground(new java.awt.Color(255, 255, 255));
         btnCarica.setText("Carica");
         btnCarica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCaricaActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCarica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 230, 40));
 
-        jLabel1.setText("Anno");
-
-        jLabel2.setText("Sezione");
-
-        jLabel3.setText("Indirizzo");
-
+        btnSuccessivo.setBackground(new java.awt.Color(102, 0, 0));
+        btnSuccessivo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnSuccessivo.setForeground(new java.awt.Color(255, 255, 255));
         btnSuccessivo.setText("Prossimo");
         btnSuccessivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuccessivoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSuccessivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 470, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel1)
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel2)
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(txtAnno, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtSezione, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtIndirizzo, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSuccessivo)
-                                    .addComponent(btnCarica))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(95, 95, 95))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAnno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSezione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIndirizzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(btnCarica)
-                .addGap(18, 18, 18)
-                .addComponent(btnSuccessivo)
-                .addContainerGap(233, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText(" CLASSI ");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 470, 70));
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtAnnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnnoActionPerformed
+    private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnnoActionPerformed
+        GiteFrame g = new GiteFrame(conn);
+        g.setVisible(true);
+
+    }//GEN-LAST:event_btnSuccessivoActionPerformed
 
     private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed
         try {
@@ -135,7 +138,7 @@ public class ClassiFrame extends javax.swing.JFrame {
             String indirizzo = txtIndirizzo.getText();
 
             PreparedStatement pstmt = conn.prepareStatement(
-                    "INSERT INTO Classi (CLA_Anno, CLA_Sezione, CLA_Indirizzo) VALUES (?, ?, ?)"
+                "INSERT INTO Classi (CLA_Anno, CLA_Sezione, CLA_Indirizzo) VALUES (?, ?, ?)"
             );
 
             pstmt.setInt(1, anno);
@@ -151,12 +154,9 @@ public class ClassiFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCaricaActionPerformed
 
-    private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
+    private void txtAnnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnnoActionPerformed
         // TODO add your handling code here:
-        GiteFrame g = new GiteFrame(conn);
-        g.setVisible(true);
-         
-    }//GEN-LAST:event_btnSuccessivoActionPerformed
+    }//GEN-LAST:event_txtAnnoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,6 +168,9 @@ public class ClassiFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtAnno;
     private javax.swing.JTextField txtIndirizzo;
     private javax.swing.JTextField txtSezione;

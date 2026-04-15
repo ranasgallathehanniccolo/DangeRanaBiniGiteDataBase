@@ -12,10 +12,11 @@ import javax.swing.JOptionPane;
  * @author dangelo.gregorio
  */
 public class PartecipazioniFrame extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PartecipazioniFrame.class.getName());
 
     private Connection conn;
+
     /**
      * Creates new form Partecipazioni
      */
@@ -26,7 +27,7 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
         caricaGite();
     }
 
-     private void caricaAlunni() {
+    private void caricaAlunni() {
         try {
             cmbAlunni.removeAllItems();
             Statement stmt = conn.createStatement();
@@ -42,8 +43,8 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-     
-     private void caricaGite() {
+
+    private void caricaGite() {
         try {
             cmbGite.removeAllItems();
             Statement stmt = conn.createStatement();
@@ -59,8 +60,7 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-     
-     
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,80 +70,112 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        cmbAlunni = new javax.swing.JComboBox<>();
-        cmbGite = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        btnSuccessivo = new javax.swing.JButton();
         btnCarica = new javax.swing.JButton();
+        cmbGite = new javax.swing.JComboBox<>();
+        cmbAlunni = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Studente");
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Gite");
+        btnSuccessivo.setBackground(new java.awt.Color(0, 102, 102));
+        btnSuccessivo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnSuccessivo.setForeground(new java.awt.Color(255, 255, 255));
+        btnSuccessivo.setText("Prossimo");
+        btnSuccessivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuccessivoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSuccessivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 470, 50));
 
-        cmbAlunni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cmbGite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        btnCarica.setBackground(new java.awt.Color(0, 102, 102));
+        btnCarica.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnCarica.setForeground(new java.awt.Color(255, 255, 255));
         btnCarica.setText("Carica");
         btnCarica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCaricaActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCarica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 230, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(105, 105, 105))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(cmbAlunni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(btnCarica)
-                .addGap(18, 18, 18)
-                .addComponent(cmbGite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbAlunni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbGite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCarica))
-                .addContainerGap(218, Short.MAX_VALUE))
-        );
+        cmbGite.setBackground(new java.awt.Color(0, 102, 102));
+        cmbGite.setForeground(new java.awt.Color(255, 255, 255));
+        cmbGite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cmbGite, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 120, -1));
+
+        cmbAlunni.setBackground(new java.awt.Color(0, 102, 102));
+        cmbAlunni.setForeground(new java.awt.Color(255, 255, 255));
+        cmbAlunni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cmbAlunni, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 120, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Gite");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 30, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Studente");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 70, -1));
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("PARTECIPAZIONI");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 470, 70));
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed
         try {
-            // "1 - Mario Rossi" prende "1"
             String voceAlunno = (String) cmbAlunni.getSelectedItem();
             int aluId = Integer.parseInt(voceAlunno.split(" - ")[0]);
 
-            // "1 - Roma" prende "1"
             String voceGita = (String) cmbGite.getSelectedItem();
             int gitId = Integer.parseInt(voceGita.split(" - ")[0]);
 
+            // Controlla se la partecipazione esiste già
+            PreparedStatement check = conn.prepareStatement(
+                "SELECT COUNT(*) FROM Partecipazione WHERE PAR_ALU_ID = ? AND PAR_GIT_ID = ?"
+            );
+            check.setInt(1, aluId);
+            check.setInt(2, gitId);
+            ResultSet rs = check.executeQuery();
+            rs.next();
+            int count = rs.getInt(1);
+            rs.close();
+            check.close();
+
+            if (count > 0) {
+                JOptionPane.showMessageDialog(null,
+                    "Lo studente " + voceAlunno.split(" - ")[1] + " è già iscritto alla gita " + voceGita.split(" - ")[1] + "!",
+                    "Partecipazione duplicata",
+                    JOptionPane.WARNING_MESSAGE
+                );
+                return; // blocca l'inserimento
+            }
+
+            // Se il controllo passa inserisce
             PreparedStatement pstmt = conn.prepareStatement(
                 "INSERT INTO Partecipazione (PAR_ALU_ID, PAR_GIT_ID) VALUES (?, ?)"
             );
-
             pstmt.setInt(1, aluId);
             pstmt.setInt(2, gitId);
             pstmt.execute();
@@ -154,14 +186,23 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    
     }//GEN-LAST:event_btnCaricaActionPerformed
+
+    private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
+
+        VisualizzaFrame g = new VisualizzaFrame(conn);
+        g.setVisible(true);
+    }//GEN-LAST:event_btnSuccessivoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarica;
+    private javax.swing.JButton btnSuccessivo;
     private javax.swing.JComboBox<String> cmbAlunni;
     private javax.swing.JComboBox<String> cmbGite;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

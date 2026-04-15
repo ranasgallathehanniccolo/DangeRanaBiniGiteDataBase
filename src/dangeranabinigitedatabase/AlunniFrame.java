@@ -12,10 +12,11 @@ import javax.swing.JOptionPane;
  * @author ranasgalla.niccolo
  */
 public class AlunniFrame extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AlunniFrame.class.getName());
 
     private Connection conn;
+
     /**
      * Creates new form StudentiFrame
      */
@@ -41,7 +42,7 @@ public class AlunniFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,101 +52,99 @@ public class AlunniFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNome = new javax.swing.JTextField();
-        txtCognome = new javax.swing.JTextField();
-        btnCarica = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         cmbClasse = new javax.swing.JComboBox<>();
         btnSuccessivo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        btnCarica = new javax.swing.JButton();
+        txtCognome = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCarica.setText("Carica");
-        btnCarica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCaricaActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Nome");
-
-        jLabel2.setText("Cognome");
-
-        jLabel3.setText("Classe");
-
+        cmbClasse.setBackground(new java.awt.Color(0, 102, 0));
+        cmbClasse.setForeground(new java.awt.Color(255, 255, 255));
         cmbClasse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cmbClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 120, -1));
 
+        btnSuccessivo.setBackground(new java.awt.Color(0, 102, 0));
+        btnSuccessivo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnSuccessivo.setForeground(new java.awt.Color(255, 255, 255));
         btnSuccessivo.setText("Prossimo");
         btnSuccessivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuccessivoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSuccessivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 470, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCarica)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCognome, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(90, 90, 90))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel2)
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel3)
-                        .addGap(95, 95, 95))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(166, 166, 166)
-                    .addComponent(btnSuccessivo)
-                    .addContainerGap(405, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCognome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addComponent(btnCarica)
-                .addContainerGap(274, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(138, 138, 138)
-                    .addComponent(btnSuccessivo)
-                    .addContainerGap(239, Short.MAX_VALUE)))
-        );
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Classe");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 100, 50, 20));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Cognome");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Nome");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 20, 50, 20));
+
+        btnCarica.setBackground(new java.awt.Color(0, 102, 0));
+        btnCarica.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnCarica.setForeground(new java.awt.Color(255, 255, 255));
+        btnCarica.setText("Carica");
+        btnCarica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaricaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCarica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 230, 40));
+
+        txtCognome.setBackground(new java.awt.Color(0, 102, 0));
+        txtCognome.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txtCognome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 120, -1));
+
+        txtNome.setBackground(new java.awt.Color(0, 102, 0));
+        txtNome.setForeground(new java.awt.Color(255, 255, 255));
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 120, -1));
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("ALUNNI");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 470, 70));
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
+
+        PartecipazioniFrame g = new PartecipazioniFrame(conn);
+        g.setVisible(true);
+    }//GEN-LAST:event_btnSuccessivoActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -161,7 +160,7 @@ public class AlunniFrame extends javax.swing.JFrame {
             int claId = Integer.parseInt(voceSelezionata.split(" - ")[0]);
 
             PreparedStatement pstmt = conn.prepareStatement(
-                    "INSERT INTO Alunni (ALU_Nome, ALU_Cognome, ALU_CLA_ID) VALUES (?, ?, ?)"
+                "INSERT INTO Alunni (ALU_Nome, ALU_Cognome, ALU_CLA_ID) VALUES (?, ?, ?)"
             );
 
             pstmt.setString(1, nome);
@@ -177,12 +176,6 @@ public class AlunniFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCaricaActionPerformed
 
-    private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
-
-        PartecipazioniFrame g = new PartecipazioniFrame (conn);
-        g.setVisible(true);
-    }//GEN-LAST:event_btnSuccessivoActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCarica;
     private javax.swing.JButton btnSuccessivo;
@@ -190,6 +183,9 @@ public class AlunniFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtCognome;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables

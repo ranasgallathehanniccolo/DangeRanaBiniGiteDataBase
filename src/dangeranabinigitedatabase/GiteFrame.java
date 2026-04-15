@@ -33,6 +33,9 @@ public class GiteFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         txtDestinazione = new javax.swing.JTextField();
         txtDurata = new javax.swing.JTextField();
         txtPrezzo = new javax.swing.JTextField();
@@ -44,78 +47,71 @@ public class GiteFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtDestinazione.addActionListener(this::txtDestinazioneActionPerformed);
+        jPanel2.setBackground(new java.awt.Color(0, 0, 102));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("GITE");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 470, 70));
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel1.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtDestinazione.setBackground(new java.awt.Color(0, 0, 102));
+        txtDestinazione.addActionListener(this::txtDestinazioneActionPerformed);
+        jPanel1.add(txtDestinazione, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 90, -1));
+
+        txtDurata.setBackground(new java.awt.Color(0, 0, 102));
+        txtDurata.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txtDurata, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 90, -1));
+
+        txtPrezzo.setBackground(new java.awt.Color(0, 0, 102));
+        txtPrezzo.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txtPrezzo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 90, -1));
+
+        btnCarica.setBackground(new java.awt.Color(0, 0, 102));
+        btnCarica.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnCarica.setForeground(new java.awt.Color(255, 255, 255));
         btnCarica.setText("Carica");
         btnCarica.addActionListener(this::btnCaricaActionPerformed);
+        jPanel1.add(btnCarica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 230, 40));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Destinazione");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 90, 40));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Durata");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 60, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Prezzo");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 60, -1));
 
+        btnSuccessivo.setBackground(new java.awt.Color(0, 0, 102));
+        btnSuccessivo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnSuccessivo.setForeground(new java.awt.Color(255, 255, 255));
         btnSuccessivo.setText("Prossimo");
         btnSuccessivo.addActionListener(this::btnSuccessivoActionPerformed);
+        jPanel1.add(btnSuccessivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 470, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel2)
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtDestinazione)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCarica)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDurata)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPrezzo)))))
-                .addGap(95, 95, 95))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(166, 166, 166)
-                    .addComponent(btnSuccessivo)
-                    .addContainerGap(405, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDestinazione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDurata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPrezzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(btnCarica)
-                .addContainerGap(274, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(138, 138, 138)
-                    .addComponent(btnSuccessivo)
-                    .addContainerGap(239, Short.MAX_VALUE)))
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDestinazioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDestinazioneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDestinazioneActionPerformed
+    private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
+
+        AlunniFrame g = new AlunniFrame(conn);
+        g.setVisible(true);
+    }//GEN-LAST:event_btnSuccessivoActionPerformed
 
     private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed
         try {
@@ -140,12 +136,9 @@ public class GiteFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCaricaActionPerformed
 
-    private void btnSuccessivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuccessivoActionPerformed
-      
-        AlunniFrame g = new AlunniFrame(conn);
-        g.setVisible(true);
-
-    }//GEN-LAST:event_btnSuccessivoActionPerformed
+    private void txtDestinazioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDestinazioneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDestinazioneActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -154,6 +147,9 @@ public class GiteFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtDestinazione;
     private javax.swing.JTextField txtDurata;
     private javax.swing.JTextField txtPrezzo;
