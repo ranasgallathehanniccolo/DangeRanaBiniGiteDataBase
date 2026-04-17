@@ -133,11 +133,39 @@ public class ClassiFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSuccessivoActionPerformed
 
     private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed
-        try {
-            int anno = Integer.parseInt(txtAnno.getText());
-            String sezione = txtSezione.getText().toUpperCase();
-            String indirizzo = txtIndirizzo.getText().toUpperCase();
+        String annoTesto = txtAnno.getText().trim();
+        if (annoTesto.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Il campo Anno non può essere vuoto!", "Errore", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!annoTesto.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Anno deve contenere solo numeri interi!", "Errore", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int anno = Integer.parseInt(annoTesto);
 
+        // --- VALIDAZIONE SEZIONE: solo lettere ---
+        String sezione = txtSezione.getText().trim().toUpperCase();
+        if (sezione.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Il campo Sezione non può essere vuoto!", "Errore", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!sezione.matches("[a-zA-Z]+")) {
+            JOptionPane.showMessageDialog(null, "Sezione deve contenere solo lettere!", "Errore", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // --- VALIDAZIONE INDIRIZZO: solo lettere e spazi ---
+        String indirizzo = txtIndirizzo.getText().trim().toUpperCase();
+        if (indirizzo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Il campo Indirizzo non può essere vuoto!", "Errore", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!indirizzo.matches("[a-zA-Z]+")) {
+            JOptionPane.showMessageDialog(null, "Indirizzo deve contenere solo lettere!", "Errore", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
             PreparedStatement check = conn.prepareStatement(
                     "SELECT COUNT(*) FROM Classi WHERE CLA_Anno = ? AND CLA_Sezione = ?"
             );

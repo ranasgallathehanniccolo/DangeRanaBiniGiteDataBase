@@ -63,6 +63,7 @@ public class GiteFrame extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtDestinazione.setBackground(new java.awt.Color(0, 0, 102));
+        txtDestinazione.setForeground(new java.awt.Color(255, 255, 255));
         txtDestinazione.addActionListener(this::txtDestinazioneActionPerformed);
         jPanel1.add(txtDestinazione, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 90, -1));
 
@@ -118,20 +119,69 @@ public class GiteFrame extends javax.swing.JFrame {
     private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed
         try {
             String destinazione = txtDestinazione.getText();
-            int durata = Integer.parseInt(txtDurata.getText());
-            int prezzo = Integer.parseInt(txtPrezzo.getText());
+            if(destinazione.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Il campo Destinazione non può essere vuoto!", "Errore", JOptionPane.ERROR_MESSAGE);
+            return;
+            }
+            if(destinazione.matches("[a-zA-Z ]+")){
+                JOptionPane.showMessageDialog(null, "Il campo Destinazione deve avere solo lettere!", "Errore", JOptionPane.ERROR_MESSAGE);
+            return;
+            }
+            String durataTesto = txtDurata.getText().trim();
+            if(durataTesto.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Il campo Durata non può essere vuoto!", "Errore", JOptionPane.ERROR_MESSAGE);
+            return;
+            }
+            if (!durataTesto.matches("\\d+")) {
+                JOptionPane.showMessageDialog(null, "Durata deve contenere solo numeri interi!", "Errore", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            int durata = Integer.parseInt(durataTesto);
+            String prezzoTesto = txtPrezzo.getText().trim();
 
-            PreparedStatement pstmt = conn.prepareStatement(
-                "INSERT INTO Gite (GIT_Destinazione, GIT_Durata, GIT_Prezzo) VALUES (?, ?, ?)"
+            if (prezzoTesto.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Il campo Prezzo non può essere vuoto!", "Errore", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (!prezzoTesto.matches("\\d+")) {
+                JOptionPane.showMessageDialog(null, "Prezzo deve contenere solo numeri!", "Errore", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+int prezzo = Integer.parseInt(prezzoTesto);
+
+            PreparedStatement check = conn.prepareStatement(
+                    "SELECT COUNT(*) FROM Gite WHERE GIT_Destinazione = ? AND GIT_Durata = ? AND GIT_Prezzo = ?"
             );
+            check.setString(1, destinazione);
+            check.setInt(2, durata);
+            check.setInt(3, prezzo);
+            ResultSet rs = check.executeQuery();
+            rs.next();
+            int count = rs.getInt(1);
+            rs.close();
+            check.close();
 
+            if (count > 0) {
+                JOptionPane.showMessageDialog(null,
+                        "Esiste già una gita a " + destinazione + " con la durata di " + durata + " e il prezzo di " + prezzo,
+                        "Duplicata",
+                        JOptionPane.WARNING_MESSAGE
+                );
+                return;
+            }
+
+            // Se il controllo passa inserisce
+            PreparedStatement pstmt = conn.prepareStatement(
+                    "INSERT INTO Gite (GIT_Destinazione, GIT_Durata, GIT_Prezzo) VALUES (?, ?, ?)"
+            );
             pstmt.setString(1, destinazione);
             pstmt.setInt(2, durata);
             pstmt.setInt(3, prezzo);
             pstmt.execute();
             pstmt.close();
 
-            JOptionPane.showMessageDialog(null, "Destinazione inserita con successo!");
+            JOptionPane.showMessageDialog(null, "Gita inserita con successo!");
 
         } catch (SQLException e) {
             e.printStackTrace();
