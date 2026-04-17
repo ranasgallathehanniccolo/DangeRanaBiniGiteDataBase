@@ -139,7 +139,7 @@ public class ClassiFrame extends javax.swing.JFrame {
             String indirizzo = txtIndirizzo.getText();
 
             PreparedStatement check = conn.prepareStatement(
-                    "INSERT INTO Classi (CLA_Anno, CLA_Sezione, CLA_Indirizzo) VALUES (?, ?, ?)"
+                    "SELECT COUNT(*) FROM Classi WHERE CLA_Anno = ? AND CLA_Sezione = ?"
             );
             check.setInt(1, anno);
             check.setString(2, sezione);
@@ -155,7 +155,7 @@ public class ClassiFrame extends javax.swing.JFrame {
                         "Duplicata",
                         JOptionPane.WARNING_MESSAGE
                 );
-                return; // blocca l'inserimento
+                return;
             }
 
             // Se il controllo passa inserisce
