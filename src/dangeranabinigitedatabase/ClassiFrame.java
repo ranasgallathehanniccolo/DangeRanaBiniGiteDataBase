@@ -135,8 +135,8 @@ public class ClassiFrame extends javax.swing.JFrame {
     private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed
         try {
             int anno = Integer.parseInt(txtAnno.getText());
-            String sezione = txtSezione.getText();
-            String indirizzo = txtIndirizzo.getText();
+            String sezione = txtSezione.getText().toUpperCase();
+            String indirizzo = txtIndirizzo.getText().toUpperCase();
 
             PreparedStatement check = conn.prepareStatement(
                     "SELECT COUNT(*) FROM Classi WHERE CLA_Anno = ? AND CLA_Sezione = ?"
