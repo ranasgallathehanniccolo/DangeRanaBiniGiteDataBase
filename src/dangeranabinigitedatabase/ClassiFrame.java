@@ -47,6 +47,7 @@ public class ClassiFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -128,7 +129,7 @@ public class ClassiFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         GiteFrame g = new GiteFrame(conn);
         g.setVisible(true);
-
+        this.dispose();
     }//GEN-LAST:event_btnSuccessivoActionPerformed
 
     private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed
@@ -137,10 +138,30 @@ public class ClassiFrame extends javax.swing.JFrame {
             String sezione = txtSezione.getText();
             String indirizzo = txtIndirizzo.getText();
 
-            PreparedStatement pstmt = conn.prepareStatement(
-                "INSERT INTO Classi (CLA_Anno, CLA_Sezione, CLA_Indirizzo) VALUES (?, ?, ?)"
+            PreparedStatement check = conn.prepareStatement(
+                    "INSERT INTO Classi (CLA_Anno, CLA_Sezione, CLA_Indirizzo) VALUES (?, ?, ?)"
             );
+            check.setInt(1, anno);
+            check.setString(2, sezione);
+            ResultSet rs = check.executeQuery();
+            rs.next();
+            int count = rs.getInt(1);
+            rs.close();
+            check.close();
 
+            if (count > 0) {
+                JOptionPane.showMessageDialog(null,
+                        "Esiste già una classe " + anno + "ª " + sezione + "!",
+                        "Duplicata",
+                        JOptionPane.WARNING_MESSAGE
+                );
+                return; // blocca l'inserimento
+            }
+
+            // Se il controllo passa inserisce
+            PreparedStatement pstmt = conn.prepareStatement(
+                    "INSERT INTO Classi (CLA_Anno, CLA_Sezione, CLA_Indirizzo) VALUES (?, ?, ?)"
+            );
             pstmt.setInt(1, anno);
             pstmt.setString(2, sezione);
             pstmt.setString(3, indirizzo);

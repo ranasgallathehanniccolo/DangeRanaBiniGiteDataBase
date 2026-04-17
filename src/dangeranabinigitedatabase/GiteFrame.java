@@ -46,6 +46,7 @@ public class GiteFrame extends javax.swing.JFrame {
         btnSuccessivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,6 +112,7 @@ public class GiteFrame extends javax.swing.JFrame {
 
         AlunniFrame g = new AlunniFrame(conn);
         g.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSuccessivoActionPerformed
 
     private void btnCaricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaActionPerformed

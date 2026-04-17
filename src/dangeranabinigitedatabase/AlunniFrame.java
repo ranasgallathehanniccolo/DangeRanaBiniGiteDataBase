@@ -65,6 +65,7 @@ public class AlunniFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -144,6 +145,7 @@ public class AlunniFrame extends javax.swing.JFrame {
 
         PartecipazioniFrame g = new PartecipazioniFrame(conn);
         g.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSuccessivoActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed

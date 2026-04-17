@@ -76,6 +76,7 @@ public class VisualizzaFrame extends javax.swing.JFrame {
         btnCercaClassiGite = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N

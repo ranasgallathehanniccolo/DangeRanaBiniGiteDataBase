@@ -81,6 +81,7 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -192,6 +193,7 @@ public class PartecipazioniFrame extends javax.swing.JFrame {
 
         VisualizzaFrame g = new VisualizzaFrame(conn);
         g.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSuccessivoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
