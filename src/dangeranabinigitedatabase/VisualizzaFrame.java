@@ -43,12 +43,12 @@ public class VisualizzaFrame extends javax.swing.JFrame {
 
     private void caricaAlunni() {
         try {
-            cmbAlunni.removeAllItems();
+            cmbClassi.removeAllItems();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT CLA_ID, CLA_Anno, CLA_Sezione FROM Classi");
             while (rs.next()) {
                 String voce = rs.getInt("CLA_ID") + " - " + rs.getInt("CLA_Anno") + " " + rs.getString("CLA_Sezione");
-                cmbAlunni.addItem(voce);
+                cmbClassi.addItem(voce);
             }
             rs.close();
             stmt.close();
@@ -66,86 +66,95 @@ public class VisualizzaFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnCercaClassiGite = new javax.swing.JButton();
+        btnCercaTutto = new javax.swing.JButton();
+        btnCercaClassi = new javax.swing.JButton();
+        btnCercaGite = new javax.swing.JButton();
+        cmbClassi = new javax.swing.JComboBox<>();
+        cmbGite = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        cmbGite = new javax.swing.JComboBox<>();
-        cmbAlunni = new javax.swing.JComboBox<>();
-        btnCercaGite = new javax.swing.JButton();
-        btnCercaClassi = new javax.swing.JButton();
-        btnCercaTutto = new javax.swing.JButton();
-        btnCercaClassiGite = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(153, 0, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnCercaClassiGite.setBackground(new java.awt.Color(102, 0, 102));
+        btnCercaClassiGite.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        btnCercaClassiGite.setForeground(new java.awt.Color(255, 255, 255));
+        btnCercaClassiGite.setText("Cerca per classi e gite");
+        btnCercaClassiGite.addActionListener(this::btnCercaClassiGiteActionPerformed);
+        jPanel1.add(btnCercaClassiGite, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 270, 30));
+
+        btnCercaTutto.setBackground(new java.awt.Color(102, 0, 102));
+        btnCercaTutto.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
+        btnCercaTutto.setForeground(new java.awt.Color(255, 255, 255));
+        btnCercaTutto.setText("Mostra Tutto");
+        btnCercaTutto.addActionListener(this::btnCercaTuttoActionPerformed);
+        jPanel1.add(btnCercaTutto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 260, 110));
+
+        btnCercaClassi.setBackground(new java.awt.Color(102, 0, 102));
+        btnCercaClassi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        btnCercaClassi.setForeground(new java.awt.Color(255, 255, 255));
+        btnCercaClassi.setText("Cerca per classi");
+        btnCercaClassi.addActionListener(this::btnCercaClassiActionPerformed);
+        jPanel1.add(btnCercaClassi, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 130, 20));
+
+        btnCercaGite.setBackground(new java.awt.Color(102, 0, 102));
+        btnCercaGite.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        btnCercaGite.setForeground(new java.awt.Color(255, 255, 255));
+        btnCercaGite.setText("Cerca per gite");
+        btnCercaGite.addActionListener(this::btnCercaGiteActionPerformed);
+        jPanel1.add(btnCercaGite, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 130, 20));
+
+        cmbClassi.setBackground(new java.awt.Color(102, 0, 102));
+        cmbClassi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        cmbClassi.setForeground(new java.awt.Color(255, 255, 255));
+        cmbClassi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cmbClassi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 120, -1));
+
+        cmbGite.setBackground(new java.awt.Color(102, 0, 102));
+        cmbGite.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        cmbGite.setForeground(new java.awt.Color(255, 255, 255));
+        cmbGite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cmbGite, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 120, -1));
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setBackground(new java.awt.Color(153, 0, 153));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextArea1.setBackground(new java.awt.Color(102, 0, 102));
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        cmbGite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 630, 280));
 
-        cmbAlunni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        btnCercaGite.setText("Cerca per gite");
-        btnCercaGite.addActionListener(this::btnCercaGiteActionPerformed);
+        jPanel3.setBackground(new java.awt.Color(153, 0, 153));
+        jPanel3.setPreferredSize(new java.awt.Dimension(650, 40));
 
-        btnCercaClassi.setText("Cerca per classi");
-        btnCercaClassi.addActionListener(this::btnCercaClassiActionPerformed);
-
-        btnCercaTutto.setText("Mostra Tutto");
-        btnCercaTutto.addActionListener(this::btnCercaTuttoActionPerformed);
-
-        btnCercaClassiGite.setText("Cerca per classi e gite");
-        btnCercaClassiGite.addActionListener(this::btnCercaClassiGiteActionPerformed);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbAlunni, 0, 147, Short.MAX_VALUE)
-                                    .addComponent(cmbGite, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnCercaGite, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnCercaClassi, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCercaClassiGite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(1, 1, 1)))
-                        .addGap(65, 65, 65)
-                        .addComponent(btnCercaTutto, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)))
-                .addContainerGap())
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbGite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCercaGite))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbAlunni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCercaClassi))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCercaClassiGite, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnCercaTutto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(27, Short.MAX_VALUE))
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -166,7 +175,7 @@ public class VisualizzaFrame extends javax.swing.JFrame {
             ResultSet rs = pstmt.executeQuery();
 
             StringBuilder sb = new StringBuilder();
-            sb.append("=== Partecipanti per la gita: ").append(voceGita.split(" - ")[1]).append(" ===\n\n");
+            sb.append("Partecipanti per la gita: ").append(voceGita.split(" - ")[1]).append("\n\n");
             boolean trovato = false;
             while (rs.next()) {
                 trovato = true;
@@ -183,7 +192,7 @@ public class VisualizzaFrame extends javax.swing.JFrame {
 
     private void btnCercaClassiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaClassiActionPerformed
         try {
-            String voceClasse = (String) cmbAlunni.getSelectedItem();
+            String voceClasse = (String) cmbClassi.getSelectedItem();
             int claId = Integer.parseInt(voceClasse.split(" - ")[0]);
 
             PreparedStatement pstmt = conn.prepareStatement(
@@ -196,7 +205,7 @@ public class VisualizzaFrame extends javax.swing.JFrame {
             ResultSet rs = pstmt.executeQuery();
 
             StringBuilder sb = new StringBuilder();
-            sb.append("=== Alunni della classe: ").append(voceClasse.split(" - ")[1]).append(" ===\n\n");
+            sb.append("Alunni della classe: ").append(voceClasse.split(" - ")[1]).append("\n\n");
             boolean trovato = false;
             while (rs.next()) {
                 trovato = true;
@@ -211,9 +220,42 @@ public class VisualizzaFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCercaClassiActionPerformed
 
+    private void btnCercaTuttoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaTuttoActionPerformed
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(
+                "SELECT a.ALU_Nome, a.ALU_Cognome, c.CLA_Anno, c.CLA_Sezione, g.GIT_Destinazione, g.GIT_Durata, g.GIT_Prezzo " +
+                "FROM Partecipazione p " +
+                "JOIN Alunni a ON p.PAR_ALU_ID = a.ALU_Matricola " +
+                "JOIN Classi c ON a.ALU_CLA_ID = c.CLA_ID " +
+                "JOIN Gite g ON p.PAR_GIT_ID = g.GIT_ID " +
+                "ORDER BY g.GIT_Destinazione, a.ALU_Cognome"
+            );
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("TUTTE LE PARTECIPAZIONI\n\n");
+            boolean trovato = false;
+            while (rs.next()) {
+                trovato = true;
+                sb.append(rs.getString("ALU_Nome")).append(" ").append(rs.getString("ALU_Cognome"))
+                .append(" | Classe: ").append(rs.getInt("CLA_Anno")).append(" ").append(rs.getString("CLA_Sezione"))
+                .append(" | Gita: ").append(rs.getString("GIT_Destinazione"))
+                .append(" | Durata: ").append(rs.getInt("GIT_Durata")).append(" giorni")
+                .append(" | Prezzo: €").append(rs.getDouble("GIT_Prezzo"))
+                .append("\n");
+            }
+            if (!trovato) sb.append("Nessuna partecipazione registrata.");
+            jTextArea1.setText(sb.toString());
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnCercaTuttoActionPerformed
+
     private void btnCercaClassiGiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaClassiGiteActionPerformed
         try {
-            String voceClasse = (String) cmbAlunni.getSelectedItem();
+            String voceClasse = (String) cmbClassi.getSelectedItem();
             int claId = Integer.parseInt(voceClasse.split(" - ")[0]);
 
             String voceGita = (String) cmbGite.getSelectedItem();
@@ -232,8 +274,8 @@ public class VisualizzaFrame extends javax.swing.JFrame {
             ResultSet rs = pstmt.executeQuery();
 
             StringBuilder sb = new StringBuilder();
-            sb.append("=== Alunni della classe ").append(voceClasse.split(" - ")[1])
-              .append(" nella gita ").append(voceGita.split(" - ")[1]).append(" ===\n\n");
+            sb.append("Alunni della classe ").append(voceClasse.split(" - ")[1])
+            .append(" nella gita ").append(voceGita.split(" - ")[1]).append("\n\n");
             boolean trovato = false;
             while (rs.next()) {
                 trovato = true;
@@ -248,39 +290,6 @@ public class VisualizzaFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCercaClassiGiteActionPerformed
 
-    private void btnCercaTuttoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCercaTuttoActionPerformed
-        try {
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(
-                "SELECT a.ALU_Nome, a.ALU_Cognome, c.CLA_Anno, c.CLA_Sezione, g.GIT_Destinazione, g.GIT_Durata, g.GIT_Prezzo " +
-                "FROM Partecipazione p " +
-                "JOIN Alunni a ON p.PAR_ALU_ID = a.ALU_Matricola " +
-                "JOIN Classi c ON a.ALU_CLA_ID = c.CLA_ID " +
-                "JOIN Gite g ON p.PAR_GIT_ID = g.GIT_ID " +
-                "ORDER BY g.GIT_Destinazione, a.ALU_Cognome"
-            );
-
-            StringBuilder sb = new StringBuilder();
-            sb.append("=== TUTTE LE PARTECIPAZIONI ===\n\n");
-            boolean trovato = false;
-            while (rs.next()) {
-                trovato = true;
-                sb.append(rs.getString("ALU_Nome")).append(" ").append(rs.getString("ALU_Cognome"))
-                  .append(" | Classe: ").append(rs.getInt("CLA_Anno")).append(" ").append(rs.getString("CLA_Sezione"))
-                  .append(" | Gita: ").append(rs.getString("GIT_Destinazione"))
-                  .append(" | Durata: ").append(rs.getInt("GIT_Durata")).append(" giorni")
-                  .append(" | Prezzo: €").append(rs.getDouble("GIT_Prezzo"))
-                  .append("\n");
-            }
-            if (!trovato) sb.append("Nessuna partecipazione registrata.");
-            jTextArea1.setText(sb.toString());
-            rs.close();
-            stmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnCercaTuttoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -291,8 +300,11 @@ public class VisualizzaFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnCercaClassiGite;
     private javax.swing.JButton btnCercaGite;
     private javax.swing.JButton btnCercaTutto;
-    private javax.swing.JComboBox<String> cmbAlunni;
+    private javax.swing.JComboBox<String> cmbClassi;
     private javax.swing.JComboBox<String> cmbGite;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
